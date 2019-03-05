@@ -3,6 +3,11 @@
 \usepackage{polski} % Pozwala na użycie polskiego. Ustawia między innymi fontenc na T1
 \usepackage[utf8]{inputenc} % Informuje o kodowaniu
 
+\usepackage{graphicx}
+\graphicspath{ {./Obrazy/} }
+
+\usepackage{textcomp} % Znaki specjalne takie jak ~
+
 \title{Laboratorium sieci komputerowych - ćw. 1 \\ Podstawy pracy na systemie z rodziny Linux}
 \author{Krzysztof Dąbrowski gr. 3}
 \date{\today}
@@ -16,7 +21,31 @@
 Celem zajęć laboratoryjnych było zaznajomienie się z podstawami pracy i administracji systemów z rodziny Linux. Przed przystąpieniem do pracy należało opanować podstawowe pojęcia związanie z kryptografią asymetryczną oraz poznać wybrane programy narzędziowe zainstalowane na komputerach laboratoryjnych.
 
 \section{Kryptografia asymetryczna}
-Jest to część kryptografii, gdzie operacja szyfrowania i odszyfrowywania informacji są od siebie istotnie różne.
+Jest to część kryptografii, gdzie operacja szyfrowania i odszyfrowywania informacji znacząco się od siebie różnią.
+
+\subsection{Sposób działania}
+Algorytmy stosowane w kryptografii asymetrycznej pozwalają na wygenerowanie pary powiązanych ze sobą kluczy. Jedne z nich jedynie na szyfrowanie danych, a drugi na ich odszyfrowanie. Klucz szyfrujący jest też nazywany \textit{publicznym} a odszyfrowujący \textit{prywatnym}.
+
+Dzięki zastosowaniu kluczny asymetrycznych możliwe jest bezpieczne przesłanie wiadomości miedzy stronami chcącymi się porozumieć.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=8cm]{schemat_szyfrowania_asymetrycznego}
+    \caption{Schemat transmisji danych}
+\end{figure}
+
+\subsection{Zastosowanie}
+Dzięki wykorzystaniu kryptografii asymetrycznej możliwe jest nawiązanie połączenia z serwerem bez potrzeby przesyłania hasła. Przeprowadzenie uwierzytelnienia w ten sposób polega na zaszyfrowaniu przez serwer danych kluczem publicznym osoby chcącej się zalogować. Następnie serwer oczekuje na odesłanie odszyfrowanej danej. Ponieważ odszyfrowanie jest możliwe tylko przez posiadacza klucza prywatnego, to serwer jest w ten sposób w stanie potwierdzić autentyczność osoby logującej się.
+
+Należy zwrócić uwagę, żę podczas tego procesu nie były przesyłane żadne wrażliwe dane. Jest on więc bezpieczny nawet w przypadku podsłuchania.
+
+\subsection{Generowanie kluczy}
+Połączoną parę kluczy można wygenerować przy pomocy polecenia \texttt{ssh-keygen}. Przy domyślnch ustawieniach zostaną one zapisanie w katalogu \texttt{{\raise.17ex\hbox{$\scriptstyle\sim$}}/.ssh}.
+
+\subsection{Przekazanie klucza}
+Jedyną pozostałą czynnością jest przekazanie klucza publicznego do serwera, do którego planuje się logować. Można to łatwo osiągnąć przy pomocy polecenia \texttt{ssh-copy-id}.
+
+Po wykonaniu tych czynności możliwe jest logowanie przez \texttt{ssh} bez podawania hasła.
 
 \section{Zarządzanie uprawnieniami administratorskimi}
 
