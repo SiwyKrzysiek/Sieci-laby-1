@@ -63,7 +63,21 @@ Plik ten może posiadać nawiązania do wybranych katalogów. W takiej sytuacji 
 \subsection{Zablokowanie sudo wszystkim innym}
 W celu zostania jedynym użytkownikiem mającym dostęp do \texttt{sudo} najłatwiej jest zakomentować wszystkie linie dający uprawnianie grupom i użytkownikom oraz dodać uprawniania sobie edytując plik \texttt{/etc/sudoers}. Należy również koniecznie postawić drugi znak \texttt{\#} przed liniami linków do innych plików.
 
+\subsection{Edycja pliku sudoers}
+
+
 \section{Blokowanie zdalnego dostępu do komputera}
+Za możliwość zdalnego logowania na stację roboczą odpowiada usługa \texttt{sshd}.
+
+By dowiedzieć się czy ta usługa jest aktualnie włączona można skorzystać z połączenia poleceń \texttt{ps -A | grep ssh}. \par{}
+\texttt{ps -A} -- Wyświetla listę wszystkich działających procesów. \par{}
+\texttt{grep ssh} -- Wybiera te elementy, które zawierają tekst ,,ssh''.
+
+\subsection{Zmiana stanu procesu}
+By zatrzymać proces związany z ssh można użyć polecenia \texttt{systemctl stop ssh}. Po jego wykonaniu nie będzie możliwe zdalne logowanie.
+
+Proces można uruchomić ponownie przy pomocy polecenia \texttt{systemctl start ssh}.
+
 
 
 \end{document}
