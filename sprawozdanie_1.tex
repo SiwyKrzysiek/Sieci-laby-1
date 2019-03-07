@@ -60,6 +60,9 @@ Decyzję o tym czy użytkownik może korzystać z polecenia \texttt{sudo} system
 
 Plik ten może posiadać nawiązania do wybranych katalogów. W takiej sytuacji do podjęcia decyzji o dostępie do \texttt{sudo} brane są pod uwagę również wszystkie pliki znajdujące się we wskazanym katalogu.
 
+\subsection{Zablokowanie sudo wszystkim innym}
+W celu zostania jedynym użytkownikiem mającym dostęp do \texttt{sudo} najłatwiej jest zakomentować wszystkie linie dający uprawnianie grupom i użytkownikom oraz dodać uprawniania sobie edytując plik \texttt{/etc/sudoers}. Należy również koniecznie postawić drugi znak \texttt{\#} przed liniami linków do innych plików.
+
 \section{Blokowanie zdalnego dostępu do komputera}
 
 
