@@ -37,7 +37,7 @@ Dzięki zastosowaniu kluczny asymetrycznych możliwe jest bezpieczne przesłanie
 \subsection{Zastosowanie}
 Dzięki wykorzystaniu kryptografii asymetrycznej możliwe jest nawiązanie połączenia z serwerem bez potrzeby przesyłania hasła. Przeprowadzenie uwierzytelnienia w ten sposób polega na zaszyfrowaniu przez serwer danych kluczem publicznym osoby chcącej się zalogować. Następnie serwer oczekuje na odesłanie odszyfrowanej danej. Ponieważ odszyfrowanie jest możliwe tylko przez posiadacza klucza prywatnego, to serwer jest w ten sposób w stanie potwierdzić autentyczność osoby logującej się.
 
-Należy zwrócić uwagę, żę podczas tego procesu nie były przesyłane żadne wrażliwe dane. Jest on więc bezpieczny nawet w przypadku podsłuchania.
+Należy zwrócić uwagę, żę podczas takiego procesu nie są przesyłane żadne wrażliwe dane. Jest on więc bezpieczny nawet w przypadku podsłuchania. W przeciwieństwie to tradycyjnego logowania.
 
 \subsection{Generowanie kluczy}
 Połączoną parę kluczy można wygenerować przy pomocy polecenia \texttt{ssh-keygen}. Przy domyślnch ustawieniach zostaną one zapisanie w katalogu \texttt{{\raise.17ex\hbox{$\scriptstyle\sim$}}/.ssh}.
@@ -48,10 +48,19 @@ Jedyną pozostałą czynnością jest przekazanie klucza publicznego do serwera,
 Po wykonaniu tych czynności możliwe jest logowanie przez \texttt{ssh} bez podawania hasła.
 
 \section{Zarządzanie uprawnieniami administratorskimi}
+W systemach zazwyczaj nie pracuje się na koncie administratorskim. Zamiast tego powinno się korzystać ze standardowego konta. Gdy potrzebne są specjalne uprawnienia należy wykonać dane polecenie z użytkownikiem zmienionym na administratora (root).
+
+\subsection{Zmiana użytkownika}
+Do zmiany użytkownika wykorzystać można polecenie \texttt{su}.
+
+Najczęściej jednak zachodzi potrzeba wykonania pojedynczego polecenia jako root. Służy do tego polecenie \texttt{sudo}. W przeciwieństwie do trwałej zmiany użytkownika po wywołaniu \texttt{sudo} użytkownik zostanie poproszony o podanie hasła do konta, z którego aktualnie korzysta, a nie z tego, jako które chce wykonać polecenie.
+
+\subsection{Dostęp do sudo}
+Decyzję o tym czy użytkownik może korzystać z polecenia \texttt{sudo} system podejmuje na podstawie informacji zawartych w pliku \texttt{/etc/sudoers}. Zawiera on listę grup i użytkowników, którzy mają taką możliwość.
+
+Plik ten może posiadać nawiązania do wybranych katalogów. W takiej sytuacji do podjęcia decyzji o dostępie do \texttt{sudo} brane są pod uwagę również wszystkie pliki znajdujące się we wskazanym katalogu.
 
 \section{Blokowanie zdalnego dostępu do komputera}
 
 
 \end{document}
-\maketitle{}
-\tableofcontents{}
