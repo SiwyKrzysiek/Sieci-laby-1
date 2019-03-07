@@ -64,7 +64,12 @@ Plik ten może posiadać nawiązania do wybranych katalogów. W takiej sytuacji 
 W celu zostania jedynym użytkownikiem mającym dostęp do \texttt{sudo} najłatwiej jest zakomentować wszystkie linie dający uprawnianie grupom i użytkownikom oraz dodać uprawniania sobie edytując plik \texttt{/etc/sudoers}. Należy również koniecznie postawić drugi znak \texttt{\#} przed liniami linków do innych plików.
 
 \subsection{Edycja pliku sudoers}
+Ponieważ plik \texttt{/etc/sudoers} jest kluczowy do poprawnego działania systemu do jego edycje zalecane jest użycie programu \texttt{visudo}. Otwiera on domyślnie plik \texttt{/etc/sudoers} przy pomocy domyślnego edytora a po zakończeniu edycji sprawdza poprawność powstałego pliku.
 
+Możliwe jest wybranie edytora używanego przez \texttt{visudo} poprzez ustawienie zmiennej \texttt{EDITOR}. \par{}
+Ponieważ zazwyczaj do edycji pliku \texttt{sudoers} wymagane są uprawniania administratorskie to przykładowe wywołanie z wybraniem edytora może wyglądać następująco: \texttt{sudo EDITOR=vim visudo}.
+
+Z powodów bezpieczeństwa domyślnie przy użyciu \texttt{sudo} czyszczone są zmienne środowiskowe. By skorzystać z wartości globalnej zmiennej \texttt{EDITOR} należy wywołać \texttt{sudo}  z flagą \texttt{-E}.
 
 \section{Blokowanie zdalnego dostępu do komputera}
 Za możliwość zdalnego logowania na stację roboczą odpowiada usługa \texttt{sshd}.
